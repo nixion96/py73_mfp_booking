@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookings list</title>
+</head>
+<body>
+    {% include "navbar.html" %}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>New Booking</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="client" class="form-label">Client</label>
+            <input type="text" class="form-control" id="client" name="client">
+        </div>
+        <div class="mb-3">
+            <label for="service" class="form-label">Service</label>
+            <select class="form-select" id="service" name="service">
+                <option value="Haircut">Haircut</option>
+                <option value="Beard Trim">Beard Trim</option>
+                <option value="Manicure">Manicure</option>
+                <option value="Massage">Massage</option>
+                <option value="Consultation">Consultation</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="time" class="form-label">Time</label>
+                <input type="time" class="form-control" id="time" name="time">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'booking_manager:booking_manager' %}" class="btn btn-secondary">Cancel</a>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#helpModal">
+            Help
+        </button>
+    </form>
+</div>
+
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">Help Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="https://drive.google.com/thumbnail?id=1fCZGQgacNm8nOJ41Xjw7rx63q8bQm5Da&sz=w500" alt="Help" class="img-fluid">
+            </div>
+            <div class="center-horizontal">
+                <h1>Sample form completion</h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer>
+    <p>{% include "footer.html" %}</p>
+</footer>
+</html>

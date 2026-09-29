@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Specialist</title>
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for person in spec %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ person.image }}"
+                             class="card-img-top"
+                             alt="{{ person.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ person.name }}</h5>
+                            <p class="card-text">
+                                Speciality: {{ person.speciality }}<br>
+                                Experience: {{ person.experience }} year
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+<footer>
+        <p>{% include "footer.html" %}</p>
+</footer>
+</html>

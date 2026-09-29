@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookings list</title>
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    <div class="container mt-4">
+        <h2>Bookings list</h2>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Client</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in book %}
+                    <tr>
+                        <td>{{ booking.client }}</td>
+                        <td>{{ booking.service }}</td>
+                        <td>{{ booking.date }}</td>
+                        <td>{{ booking.time }}</td>
+                        <td>
+                            {% if booking.status == "confirmed" %}
+                                <span class="badge text-bg-success">Confirmed</span>
+                            {% elif booking.status == "pending" %}
+                                <span class="badge text-bg-warning">Pending</span>
+                            {% elif booking.status == "cancelled" %}
+                                <span class="badge text-bg-danger">Cancelled</span>
+                            {% else %}
+                                <span class="badge text-bg-secondary">{{ booking.status }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+<footer>
+        <p>{% include "footer.html" %}</p>
+</footer>
+</html>
